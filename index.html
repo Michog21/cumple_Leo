@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Cumpleaños 20, Leo</title>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Urbanist&display=swap" rel="stylesheet">
+<link rel="stylesheet">
+
+<style>
+:root {
+    --cyan-shadow: #244540;
+    --teal: #800000;
+    --garnet: #6b1a1a;
+    --ruby: #af2230;
+    --bge: #064a2e; 
+    --bg: #69c8cc;
+    --text: #1c1c1c;
+    --nav-h: 80px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Urbanist', sans-serif;
+    background: linear-gradient(to bottom, #69c8cc,#064a2e);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/*NAV*/
+nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    background: rgba(157, 8, 8, 0.72);
+    border-bottom: 1px solid rgba(0,128,128,0.13);
+}
+
+nav a {
+    font-family: "Aboreto", system-ui;
+    font-size: 1 rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bg);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 3px;
+    transition: color 0.3s;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1.5px;
+    background: var(--teal);
+    transition: width 0.35s cubic-bezier(.25,.46,.45,.94);
+}
+nav a:hover { color: var(--teal); }
+nav a:hover::after { width: 100%; }
+
+/*SECCIONES*/
+section {
+    min-height: 100vh;
+    padding: calc(var(--nav-h) + 5rem) 6vw 5rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+section.visible { opacity: 1; transform: translateY(0); }
+
+.section-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.6rem;
+}
+.section-title {
+    font-family: 'Noto Serif', sans-serif;
+    font-size: clamp(1.2rem, 8vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--garnet);
+    margin-bottom: 1.5rem;
+}
+.section-text {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #3f1212;
+    max-width: 100%;
+    text-align: justify;
+}
+
+/*DECORACIÓN FONDO*/
+section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(0,128,128,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 10% 90%, rgba(155,17,30,0.06) 0%, transparent 70%);
+}
+
+/*INICIO*/
+#inicio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+.inicio-content {}
+.inicio-imagen-wrap {
+    position: relative;
+}
+
+.inicio-imagen-wrap img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;  
+}
+
+.inicio-imagen-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--cyan-shadow) 0%, var(--teal) 100%);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: "Aboreto", system-ui;
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.9;
+    text-align: center;
+    padding: 2rem;
+}
+.inicio-imagen-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border: 1.5px solid var(--teal);
+    border-radius: 2px;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* Contador */
+#contador-wrap {
+    margin-top: 2.5rem;
+}
+.contador-label {
+    font-size: 1 rem;
+    text-align: justify;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.8rem;
+}
+/* ← Aquí se montará tu JS de contador */
+#mi-contador {
+    font-family: "Aboreto", system-ui;
+    font-size: 3rem;
+    color: var(--ruby);
+    font-weight: 300;
+}
+
+/* ── VIDEO ── */
+#video {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.video-meta {
+    margin-bottom: 2.5rem;
+}
+.video-container {
+    width: 100%;
+    max-width: 960px;
+    aspect-ratio: 16/9;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    box-shadow: 0 30px 80px rgba(107,26,26,0.15);
+}
+.video-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    border: none;
+}
+
+/*MÚSICA*/
+#musica {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+.playlist-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(75, 6, 6, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(12, 56, 56, 0.15);
+}
+.track {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: rgba(3, 29, 25, 0.1);
+    cursor: pointer;
+    transition: background 0.25s, padding-left 0.25s;
+    position: relative;
+    overflow: hidden;
+}
+.track::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--ruby);
+    transform: scaleY(0);
+    transition: transform 0.25s;
+}
+.track:hover { background: rgba(178,216,216,0.25); padding-left: 1.6rem; }
+.track:hover::before { transform: scaleY(1); }
+.track-num {
+    font-size: 0.7rem;
+    color: var(--teal);
+    width: 20px;
+    text-align: right;
+    font-family: 'Cormorant Garamond', serif;
+}
+.track-info { flex: 1; min-width: 0; }
+.track-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--garnet);
+}
+.track-artist {
+    font-size: 0.75rem;
+    color: #454545;
+    margin-top: 2px;
+}
+.track-duration {
+    font-size: 0.72rem;
+    color: #454545;
+    font-variant-numeric: tabular-nums;
+}
+
+.spotify-embed-wrap {
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(107,26,26,0.1);
+}
+.spotify-embed-wrap iframe {
+    border: none;
+    display: block;
+}
+
+.play-btn {
+    background: none;
+    border: 1.5px solid var(--teal);
+    color: var(--teal);
+    border-radius: 50%;
+    width: 30px; height: 30px;
+    font-size: 0.7rem;
+    cursor: none;
+    flex-shrink: 0;
+    transition: background 0.25s, color 0.25s, transform 0.2s;
+    display: flex; align-items: center; justify-content: center;
+    padding-left: 2px; /* centra visualmente el ▶ */
+}
+.play-btn:hover {
+    background: var(--teal);
+    color: white;
+    transform: scale(1.1);
+}
+.play-btn.active {
+    background: var(--ruby);
+    border-color: var(--ruby);
+    color: white;
+}
+
+.spotify-inline {
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s cubic-bezier(.25,.46,.45,.94), opacity 0.4s;
+    opacity: 0;
+    grid-column: 1 / -1; /* ocupa todo el ancho si usas grid */
+}
+.spotify-inline.open {
+    max-height: 160px;
+    opacity: 1;
+}
+.spotify-inline iframe {
+    width: 100%;
+    height: 152px;
+    border: none;
+    display: block;
+    margin-top: 0.6rem;
+}
+
+
+.track {
+    flex-wrap: wrap;
+}
+
+/*GALERÍA*/
+#galeria {
+    min-height: auto;
+    padding-bottom: 6rem;
+}
+.galeria-meta { margin-bottom: 3rem; }
+.galeria-grid {
+    columns: 4 220px;
+    gap: 10px;
+}
+.galeria-item {
+    break-inside: avoid;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+.galeria-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s cubic-bezier(.25,.46,.45,.94), filter 0.5s;
+    filter: saturate(0.85);
+}
+.galeria-item:hover img {
+    transform: scale(1.04);
+    filter: saturate(1.1);
+}
+.galeria-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(107,26,26,0.35), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+.galeria-item:hover::after { opacity: 1; }
+
+/* Lightbox */
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(12,8,8,0.93);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+#lightbox.open { display: flex; }
+#lightbox img {
+    max-width: 88vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 40px 120px rgba(0,0,0,0.7);
+    animation: lbIn 0.35s cubic-bezier(.25,.46,.45,.94);
+}
+@keyframes lbIn { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
+#lightbox-close {
+    position: fixed;
+    top: 2rem; right: 2rem;
+    color: white;
+    font-size: 1.8rem;
+    cursor: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+}
+#lightbox-close:hover { opacity: 1; }
+
+/*CARTA*/
+#carta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carta-wrap {
+    max-width: 680px;
+    width: 100%;
+    position: relative;
+}
+.carta-paper {
+    background: rgb(255, 222, 210);
+    padding: 4rem 4.5rem;
+    border-radius: 2px;
+    box-shadow:
+    0 2px 4px rgba(107,26,26,0.04),
+    0 12px 40px rgba(107,26,26,0.09),
+    0 40px 100px rgba(107,26,26,0.08);
+    position: relative;
+    overflow: hidden;
+}
+.carta-paper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--garnet), var(--ruby), var(--teal));
+}
+.carta-ornament {
+    text-align: center;
+    font-family: '', serif;
+    font-size: 1.8rem;
+    color: var(--ruby);
+    opacity: 0.4;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.3em;
+}
+.carta-title {
+    font-family: "Aboreto", system-ui;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--garnet);
+    text-align: center;
+    line-height: 1.15;
+    margin-bottom: 2.5rem;
+}
+.carta-body {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 1.15rem;
+    line-height: 2;
+    color: #3a2a2a;
+    /* Escribe aquí el texto de tu carta */
+}
+.carta-firma {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--ruby);
+    text-align: right;
+    margin-top: 2.5rem;
+}
+.carta-deco-line {
+    width: 60px;
+    height: 1px;
+    background: var(--teal);
+    margin: 2rem auto;
+    opacity: 0.4;
+}
+
+/*PARTICLES / PÉTALES*/
+#particles-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.55;
+}
+
+/*FOOTER*/
+footer {
+    text-align: center;
+    padding: 3rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--teal);
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+/*RESPONSIVE*/
+@media (max-width: 768px) {
+    #inicio { grid-template-columns: 1fr; }
+    #musica { grid-template-columns: 1fr; }
+    .galeria-grid { columns: 2 140px; }
+    .carta-paper { padding: 2.5rem 2rem; }
+    section { padding: calc(var(--nav-h) + 3rem) 5vw 3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Partículas -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- Lightbox -->
+<div id="lightbox">
+<button id="lightbox-close" onclick="closeLightbox()">✕</button>
+<img id="lightbox-img" src="" alt=""/>
+</div>
+
+<!-- NAV -->
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#video">Video</a>
+<a href="#musica">Música</a>
+<a href="#galeria">Galería</a>
+<a href="#carta">Carta</a>
+</nav>
+
+<!--INICIO-->
+<section id="inicio">
+<div class="inicio-content">
+<p class="section-label">Viernes 24 de Abril, 2026</p>
+
+<h1 class="section-title">Feliz<br/>Cumpleaños,<br/><em style="font-style:italic; color:var(--ruby);">Mi amor.</em></h1>
+
+
+<p class="section-text">
+    Amor, hoy en tu día especial, te quería dar un detallito en el que he estado trabajando, espero que te guste. 
+    Aquí podrás encontrar un videíto que te hice con mucho amor, después podrás ver que siempre te pienso, 
+    y literalmente cada canción que pasa por mi mente es sobre tí. Posteriormente, podrás encontrar un pequeñisimo álbum 
+    con mis fotos favoritas de tí (en algunas aparezco yo, upsi !!!!), y ya para finalizar, podrás
+    encontrar una pequeña carta, donde hice mi mejor intento para escribirte todo
+    lo que siento, sin embargo, ni todas las páginas web del mundo alcanzarían para 
+    contener todas las palabras que quiero expresarte. En fin, con mucho amor, Michelle.  
+</p>
+
+<div id="contador-wrap">
+    <p class="contador-label">¿Te has preguntado tu edad exacta?<br/>Tal vez no, pero aquí siempre la tendrás</p>
+    <div id="mi-contador">
+    </div>
+</div>
+</div>
+
+<div class="inicio-imagen-wrap">
+<div class="inicio-imagen-placeholder">
+    <img src="img/imagen1.jpeg">
+</div>
+</div>
+</section>
+
+<!--VIDEO-->
+<section id="video">
+<div class="video-meta">
+<p class="section-label">Un poema que no rima</p>
+<h2 class="section-title">10 cosas que odio de Leo</h2>
+<p class="section-text">
+    Perdón amor, adoro esa película, adoro las películas de romance,
+    adoro verme reflejada en cada una de ellas, ahora que 
+    puedo vivir algo mucho mejor que una pelícua de romance,
+    puedo ver tu vida como si fuera una película, a decir verdad
+    eres mi película favorita...
+</p>
+</div>
+
+<div class="video-container">
+<iframe
+    src="https://www.youtube.com/embed/o170ZI1-sXM?si=-J9GLNYwIn33N5lP"
+    title="10 Cosas de odio de Leo"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+</div>
+</section>
+
+<!-- MÚSICA-->
+<section id="musica">
+<div>
+    
+<p class="section-label">"I'm sorry, every song's about you"</p>
+<h2 class="section-title">I just want you</h2>
+<p class="section-text">
+    Sé lo que estás pensando... ¡Otra playlist! Pero, ¿Cómo no pensar en tí con cada canción?
+    Todo el día escucho música, eso significa que todo el día estás en mi mente, escuchar estás 
+    canciones se sienten como un abrazo cuando no estás.
+    A continuación, mis letras favoritas:<br><br>
+    "I just want you, uh
+Have a couple kids, got the whole block lookin' like you"<br><br>
+    "I remember who I am when I'm with you.
+Your love is tough, your love is tried and true blue"<br><br>
+"I don't wanna think of anything else now that I thought of you"<br><br>
+"I'm so grateful, baby, grateful that you're lovin' me, my desire<br><br>
+"We'll forget the sun in his jealous sky, as we lie in fields of gold"<br><br>
+"I'll wait forever for your love"<br><br>
+"A ti no se compara nada y nadie"<br><br>
+"Be mine, all mine"<br><br>
+"Sugar coated melting in your mouth"<br><br>
+"Eres mi amor eterno, mi ángel de la guarda"<br><br>
+"You're just like a dream"<br><br>
+"Won't you come and waste the day with me?"<br><br>
+"It had to be you. Wonderful you"<br><br>
+"My baby's fit like a daydream"<br><br>
+"'Cause in the night, i'm sleepless without you"<br><br>
+</p>
+</div>
+
+<div>
+<div class="spotify-embed-wrap">
+    <iframe
+    src="https://open.spotify.com/embed/playlist/4VHH1u5YBUn3FVlGMERGOj?utm_source=generator"
+    width="100%"
+    height="520"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy">
+    </iframe>
+</div>
+
+<div class="playlist-wrap" style="margin-top:2rem;">
+
+<div class="track">
+    <span class="track-num">01</span>
+    <div class="track-info">
+    <div class="track-name">Wi$h Li$t</div>
+    <div class="track-artist">Taylor Swift</div>
+    </div>
+    <span class="track-duration">3:31</span>
+    <button class="play-btn" onclick="togglePlayer(this, '1qwClaxDb5fCrLjXaAmB35?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">02</span>
+    <div class="track-info">
+    <div class="track-name">True Blue</div>
+    <div class="track-artist">Boygenius</div>
+    </div>
+    <span class="track-duration">4:56</span>
+    <button class="play-btn" onclick="togglePlayer(this, '48Qes8IUekSZpcNDQgYzUX?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">03</span>
+    <div class="track-info">
+    <div class="track-name">Daylight</div>
+    <div class="track-artist">Taylor Swift</div>
+    </div>
+    <span class="track-duration">4:53</span>
+    <button class="play-btn" onclick="togglePlayer(this, '1fzAuUVbzlhZ1lJAx9PtY6?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">04</span>
+    <div class="track-info">
+    <div class="track-name">If I should die tonight</div>
+    <div class="track-artist">Marvin Gaye</div>
+    </div>
+    <span class="track-duration">4:01</span>
+    <button class="play-btn" onclick="togglePlayer(this, '2TAAT4VKcMQgaQi1usGaA6?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">05</span>
+    <div class="track-info">
+    <div class="track-name">Fields of gold</div>
+    <div class="track-artist">Sting</div>
+    </div>
+    <span class="track-duration">3:42</span>
+    <button class="play-btn" onclick="togglePlayer(this, '0I1DJdLt9BKOb7GWmWxCjo?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">06</span>
+    <div class="track-info">
+    <div class="track-name">Wait forever</div>
+    <div class="track-artist">Samm Henshaw</div>
+    </div>
+    <span class="track-duration">4:16</span>
+    <button class="play-btn" onclick="togglePlayer(this, '14b32tTEa1Lyt4PofwRXMB?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">07</span>
+    <div class="track-info">
+    <div class="track-name">Nada y nadie</div>
+    <div class="track-artist">Sen Senra</div>
+    </div>
+    <span class="track-duration">3:24</span>
+    <button class="play-btn" onclick="togglePlayer(this, '5jpYOzDqu7xv75FHk0KIw2?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">08</span>
+    <div class="track-info">
+    <div class="track-name">Let's go out tonight</div>
+    <div class="track-artist">The blue nile</div>
+    </div>
+    <span class="track-duration">5:16</span>
+    <button class="play-btn" onclick="togglePlayer(this, '0Q1q2AU5xtBXD50Pfj9MH3?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">09</span>
+    <div class="track-info">
+    <div class="track-name">Bags</div>
+    <div class="track-artist">Clairo</div>
+    </div>
+    <span class="track-duration">4:39</span>
+    <button class="play-btn" onclick="togglePlayer(this, '3ISKxnCGKc5B9zr9CTUB3v?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">10</span>
+    <div class="track-info">
+    <div class="track-name">Arrullo de estrellas</div>
+    <div class="track-artist">Zoé</div>
+    </div>
+    <span class="track-duration">4:13</span>
+    <button class="play-btn" onclick="togglePlayer(this, '1p4rYrxjVkj6v2eMzRhLfA?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">11</span>
+    <div class="track-info">
+    <div class="track-name">Just like heaven</div>
+    <div class="track-artist">The cure</div>
+    </div>
+    <span class="track-duration">3:32</span>
+    <button class="play-btn" onclick="togglePlayer(this, '4NnWuGQujzWUEg0uZokO5M?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">12</span>
+    <div class="track-info">
+    <div class="track-name">The café</div>
+    <div class="track-artist">Samm Henshaw</div>
+    </div>
+    <span class="track-duration">3:58</span>
+    <button class="play-btn" onclick="togglePlayer(this, '6OpLUQv4t3DSFyT5MGKOn8?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">13</span>
+    <div class="track-info">
+    <div class="track-name">It had to be you</div>
+    <div class="track-artist">Frank Sinatra</div>
+    </div>
+    <span class="track-duration">3:55</span>
+    <button class="play-btn" onclick="togglePlayer(this, '0Ab4lEHfPY98aqtQrKQbUu?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">14</span>
+    <div class="track-info">
+    <div class="track-name">Call it what you want</div>
+    <div class="track-artist">Taylor Swift</div>
+    </div>
+    <span class="track-duration">3:24</span>
+    <button class="play-btn" onclick="togglePlayer(this, '1GwMQaZz6Au3QLDbjbMdme?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+<div class="track">
+    <span class="track-num">15</span>
+    <div class="track-info">
+    <div class="track-name">Lose my cool,</div>
+    <div class="track-artist">Kali Uchis</div>
+    </div>
+    <span class="track-duration">5:56</span>
+    <button class="play-btn" onclick="togglePlayer(this, '54Z2Nr6JA67vqyNAWVYlBD?utm_source=generator')">▶</button>
+    <div class="spotify-inline"></div>
+</div>
+
+</div>
+
+
+</div>
+</section>
+
+<!-- GALERÍA-->
+<section id="galeria">
+<div class="galeria-meta">
+<p class="section-label">Algunos recuerdos</p>
+<h2 class="section-title">gaLEOría</h2>
+<p class="section-text">
+    ¿Entiendes? Porque es tu galería, y te llamas Leo, entonces gaLEOría, jajaja ok no, bueno, 
+    aquí podrás encontrar algunas de mis fotos favoritas de tí, espero que te gusten, y si no, pues, 
+    lo importante es que me gustaron a mí jijiji, porque te juro que si yo construyera un museo, sería de tí. Ojalá
+    pudieras verte con mis ojos y entendieras lo hermoso que eres.
+</p>
+</div>
+
+
+<div class="galeria-grid">
+<div class="galeria-item"><img src="img/imagen2.jpeg" alt="Foto 1" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen101.jpeg" alt="Foto 2" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen3.jpeg" alt="Foto 3" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen100.jpeg" alt="Foto 4" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen4.jpeg" alt="Foto 5" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen99.jpeg" alt="Foto 6" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen5.jpeg" alt="Foto 7" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen98.jpeg" alt="Foto 8" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen6.jpeg" alt="Foto 9" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen97.jpeg" alt="Foto 10" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen7.jpeg" alt="Foto 11" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen96.jpeg" alt="Foto 12" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen8.jpeg" alt="Foto 13" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen95.jpeg" alt="Foto 14" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen9.jpeg" alt="Foto 15" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen94.jpeg" alt="Foto 16" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen10.jpeg" alt="Foto 17" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen93.jpeg" alt="Foto 18" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen11.jpeg" alt="Foto 19" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen92.jpeg" alt="Foto 20" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen12.jpeg" alt="Foto 21" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen91.jpeg" alt="Foto 22" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen13.jpeg" alt="Foto 23" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen90.jpeg" alt="Foto 24" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen14.jpeg" alt="Foto 25" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen89.jpeg" alt="Foto 26" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen15.jpeg" alt="Foto 27" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen88.jpeg" alt="Foto 28" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen16.jpeg" alt="Foto 29" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen87.jpeg" alt="Foto 30" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen17.jpeg" alt="Foto 31" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen86.jpeg" alt="Foto 32" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen18.jpeg" alt="Foto 33" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen85.jpeg" alt="Foto 34" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen19.jpeg" alt="Foto 35" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen84.jpeg" alt="Foto 36" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen20.jpeg" alt="Foto 37" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen83.jpeg" alt="Foto 38" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen21.jpeg" alt="Foto 39" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen82.jpeg" alt="Foto 40" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen22.jpeg" alt="Foto 41" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen81.jpeg" alt="Foto 42" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen23.jpeg" alt="Foto 43" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen80.jpeg" alt="Foto 44" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen24.jpeg" alt="Foto 45" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen79.jpeg" alt="Foto 46" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen25.jpeg" alt="Foto 47" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen78.jpeg" alt="Foto 48" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen26.jpeg" alt="Foto 49" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen77.jpeg" alt="Foto 50" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen27.jpeg" alt="Foto 51" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen76.jpeg" alt="Foto 52" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen28.jpeg" alt="Foto 53" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen75.jpeg" alt="Foto 54" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen29.jpeg" alt="Foto 55" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen74.jpeg" alt="Foto 56" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen30.jpeg" alt="Foto 57" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen73.jpeg" alt="Foto 58" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen31.jpeg" alt="Foto 59" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen72.jpeg" alt="Foto 60" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen32.jpeg" alt="Foto 61" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen71.jpeg" alt="Foto 62" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen33.jpeg" alt="Foto 63" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen70.jpeg" alt="Foto 64" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen34.jpeg" alt="Foto 65" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen69.jpeg" alt="Foto 66" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen35.jpeg" alt="Foto 67" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen68.jpeg" alt="Foto 68" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen36.jpeg" alt="Foto 69" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen67.jpeg" alt="Foto 70" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen37.jpeg" alt="Foto 71" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen66.jpeg" alt="Foto 72" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen38.jpeg" alt="Foto 73" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen64.jpeg" alt="Foto 74" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen39.jpeg" alt="Foto 75" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen65.jpeg" alt="Foto 76" onclick="openLightbox(this.src)"/></div>
+<!-- 
+<div class="galeria-item"><img src="img/imagen40.jpeg" alt="Foto 77" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen63.jpeg" alt="Foto 78" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen41.jpeg" alt="Foto 79" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen62.jpeg" alt="Foto 80" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen42.jpeg" alt="Foto 81" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen61.jpeg" alt="Foto 82" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen43.jpeg" alt="Foto 83" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen60.jpeg" alt="Foto 84" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen44.jpeg" alt="Foto 85" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen59.jpeg" alt="Foto 86" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen45.jpeg" alt="Foto 87" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen58.jpeg" alt="Foto 88" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen46.jpeg" alt="Foto 89" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen57.jpeg" alt="Foto 90" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen47.jpeg" alt="Foto 91" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen56.jpeg" alt="Foto 92" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen48.jpeg" alt="Foto 93" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen55.jpeg" alt="Foto 94" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen49.jpeg" alt="Foto 95" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen54.jpeg" alt="Foto 96" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen50.jpeg" alt="Foto 97" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen53.jpeg" alt="Foto 98" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen51.jpeg" alt="Foto 99" onclick="openLightbox(this.src)"/></div>
+<div class="galeria-item"><img src="img/imagen52.jpeg" alt="Foto 100" onclick="openLightbox(this.src)"/></div>-->
+</div>
+</section>
+
+<!--CARTA-->
+<section id="carta">
+<div class="carta-wrap">
+<div class="carta-paper">
+    <div class="carta-ornament">♥ ♥ ♥</div>
+
+    <h2 class="carta-title">Mi querido Leo:</h2>
+
+    <div class="carta-deco-line"></div>
+
+    <div class="carta-body">
+    <p>Sé que tal vez no es el regalo más increíble del mundo, pero quiero que sepas
+        que me esforcé mucho para hacerlo, y aún así creo que aunque te de el mundo,
+        nunca sería suficiente para que entiendas todo lo que soy capaz de hacer por tí, 
+        porque de verdad, jamás medirás el amor y la admiración que te tengo. Verte crecer
+        estos años, ha sido el mejor regalo que la vida me ha dado, y no puedo esperar a 
+        seguir viéndote crecer, a tu lado, apoyándote, aprendiendo de tí, y amándote cada día más. 
+        Gracias por ser mi persona favorita, gracias por existir, gracias por permitirme estar a tu
+        lado. Espero que este cumpleaños lo puedas pasar increíble, así como todos los días que siguen,
+        y espero, de todo corazón, que me dejes estar a tu lado, acompañándote, apoyándote, y amándote por siempre. 
+    </p>
+    </div>
+
+    <div class="carta-deco-line"></div>
+
+    <p class="carta-firma">Te amo mi vida. Siempre tuya, Michelle. </p>
+</div>
+</div>
+</section>
+
+<footer>Le voy a dar mantenimiento a la página, te lo prometo.</footer>
+
+<script>
+/* ══ CURSOR ══ */
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animCursor() {
+cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+requestAnimationFrame(animCursor);
+})();
+
+/* ══ SCROLL REVEAL ══ */
+const observer = new IntersectionObserver(entries => {
+entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+/* ══ LIGHTBOX ══ */
+function openLightbox(src) {
+document.getElementById('lightbox-img').src = src;
+document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+document.getElementById('lightbox').classList.remove('open');
+}
+document.getElementById('lightbox').addEventListener('click', e => {
+if (e.target === e.currentTarget) closeLightbox();
+});
+
+/* ══ PARTÍCULAS SUAVES ══ */
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, parts = [];
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+const COLORS = ['#b2d8d8','#008080','#9b111e','#6b1a1a'];
+for (let i = 0; i < 38; i++) {
+parts.push({
+    x: Math.random() * 1000, y: Math.random() * 1000,
+    r: Math.random() * 2.5 + 0.5,
+    vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+    c: COLORS[Math.floor(Math.random() * COLORS.length)],
+    a: Math.random() * 0.5 + 0.15
+});
+}
+(function animParts() {
+ctx.clearRect(0, 0, W, H);
+parts.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.c;
+    ctx.globalAlpha = p.a;
+    ctx.fill();
+});
+ctx.globalAlpha = 1;
+requestAnimationFrame(animParts);
+})();
+
+
+
+/*CONTADOR*/
+(function() {
+const inicio = new Date('2006-04-24T07:33:00');
+function actualizar() {
+    const ahora = new Date();
+    const diff = ahora - inicio;
+    const dias = Math.floor(diff / 86400000);
+    const horas = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const segs = Math.floor((diff % 60000) / 1000);
+    document.getElementById('mi-contador').innerHTML =
+    `<span style="color:var(--garnet)">${dias}</span> <small style="font-size:0.5em;color:var(--teal)">días</small> &nbsp;
+        <span style="color:var(--garnet)">${String(horas).padStart(2,'0')}</span><small style="font-size:0.5em;color:var(--teal)">h</small> &nbsp;
+        <span style="color:var(--garnet)">${String(mins).padStart(2,'0')}</span><small style="font-size:0.5em;color:var(--teal)">m</small> &nbsp;
+        <span style="color:var(--garnet)">${String(segs).padStart(2,'0')}</span><small style="font-size:0.5em;color:var(--teal)">s</small>`;
+}
+actualizar();
+setInterval(actualizar, 1000);
+})();
+
+/* ══ SPOTIFY INLINE PLAYER ══ */
+function togglePlayer(btn, trackId) {
+    const track = btn.closest('.track');
+    const panel = track.querySelector('.spotify-inline');
+    const isOpen = panel.classList.contains('open');
+
+    document.querySelectorAll('.spotify-inline.open').forEach(p => {
+        p.classList.remove('open');
+        p.innerHTML = '';
+    });
+    document.querySelectorAll('.play-btn.active').forEach(b => {
+        b.classList.remove('active');
+        b.textContent = '▶';
+    });
+
+    if (!isOpen) {
+    panel.innerHTML = `<iframe
+        src="https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+        </iframe>`;
+    panel.classList.add('open');
+    btn.classList.add('active');
+    btn.textContent = '■';
+    }
+}
+</script>
+
+</body>
+</html>
